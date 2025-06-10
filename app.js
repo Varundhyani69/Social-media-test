@@ -31,6 +31,9 @@ app.engine('ejs', engine);
 app.set('view engine','ejs');
 
 //API endpoint
+app.get('/', (req, res) => {
+  res.redirect('/api/auth/login');
+});
 app.use('/api/auth',authRoute);
 
 app.listen(port,()=>{
