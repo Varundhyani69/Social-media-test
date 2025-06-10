@@ -370,3 +370,8 @@ exports.getEdit = async(req,res)=>{
     const post = await user.posts.id(postId);
     res.render('../views/edit.ejs',{post,user});
 }
+exports.getProfile = async(req,res)=>{
+    const shareId = req.params.id;
+    const profile = await userModel.findById(shareId);
+    res.render('../views/profile.ejs',{profile});
+}

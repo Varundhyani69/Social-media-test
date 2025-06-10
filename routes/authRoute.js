@@ -27,5 +27,5 @@ router.get('/get-home-page',cookieData,userAuth.getHomePage);
 router.get('/edit-profile',cookieData,userAuth.getEditProfile);
 router.get('/getUploadPost',cookieData,userAuth.getUploadPost);
 router.get('/getEdit/:id',cookieData,userAuth.getEdit);
-
+router.get('/profile/:id',userAuth.getProfile);
 module.exports = router;
