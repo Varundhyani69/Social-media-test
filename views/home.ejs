@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery kinda somethin...</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+        <div class="nav sticky-top">
+        <nav class="navbar navb navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+            <a class="navbar-brand" class="btn-nav" href="/api/auth/get-home-page"><b><%= user.name %></b></a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <a class="nav-link active btn-nav" aria-current="page" href="/api/auth/get-home-page">Home</a>
+
+                <!-- Settings Dropdown -->
+                <div class="nav-item dropdown ms-3">
+                    <a class="nav-link dropdown-toggle btn-nav" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Settings
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                        <form action="/api/auth/send-verify-otp" method="post" class="px-3">
+                            <button type="submit" class="dropdown-item btn-nV">Verify Account</button>
+                        </form>
+                        </li>
+                        <li>
+                        <form action="/api/auth/sendResetOtp" method="post" class="px-3">
+                            <button type="submit" class="dropdown-item btn-dropdown btn-nav">Reset Password</button>
+                        </form>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Logout Button -->
+                <div class="ms-auto">
+                <form action="/api/auth/logout" method="post">
+                    <button class="btn btn-outline-danger ms-3 btn-nav logout-btn">Logout</button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </nav>
+        </div>
+
+        <% if (success && success.length > 0) { %>
+                <% success.forEach((msg) => { %>
+                    <div class="flash-success"><%= msg %></div>
+                <% }) %>
+        <% } %>
+        
+        <% if (errors && errors.length > 0) { %>
+                <% errors.forEach((msg) => { %>
+                    <div class="flash-error"><%= msg %></div>
+                <% }) %>
+        <% } %>
+
+        
+            
+            <div class="info">
+                <div class="pfp"> 
+                    <img src="<%= user.pfp.url%>" class="dp shadow-lg">
+                 </div>
+                <div class="textInfo">
+                    <h1>@<%=user.name%></h1>
+                    <p class="bio">
+                        <i><%=user.bio%></i></p>
+                    <button class="btn btn-primary submit-btn"><a href="/api/auth/edit-profile">Edit Profile</a></button>
+                    <button class="btn btn-primary submit-btn"><a href="/api/auth/getUploadPost">Upload Post</a></button>
+                    <button id="shareBtn" class="btn btn-secondary submit-btn">Share Profile</button>
+
+                </div>
+                
+            </div>
+            <div class="posts">
+                <div class="row mt-1">
+                        <% user.posts.forEach(post => { %>
+                            <div class="col-12 col-md-6 col-lg-3 mb-1">
+                                <div class="card mb-3 ml-2 post" style="width: 18rem;">
+                                <img src="<%= post.url %>" class="card-img-top card-img">
+                                <div class="card-body">
+                                    <h5 class="card-title">@<%= user.name %></h5>
+                                    <p class="card-text"><%= post.title %></p>
+                                        <div class="btn-diplay">
+                                            <form  action="/api/auth/delete/<%=post._id%>" method="post"> 
+                                                <button class="btn btn-primary btn-edit">Delete post</button>
+                                            </form>
+                                            <form action="/api/auth/getEdit/<%=post._id%>" method="get">
+                                                <button class="btn btn-primary btn-delete">Edit post</button>
+                                            </form>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            </div>
+                            
+                            
+                        <% }) %>
+            </div>
+            
+
+            </div>
+            
+        <script>
+            document.getElementById("shareBtn").addEventListener("click", function () {
+                const profileURL = `${window.location.origin}/api/auth/profile/<%= user._id %>`;
+                navigator.clipboard.writeText(profileURL)
+                    .then(() => {
+                        alert("Profile link copied to clipboard!");
+                    })
+                    .catch((err) => {
+                        alert("Failed to copy link");
+                        console.error(err);
+                    });
+            });
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

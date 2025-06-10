@@ -1,0 +1,80 @@
+body {
+    background-color: #d1d1d1 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.submit-container {
+    width: 500px;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: #d1d1d1 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-area {
+    width: 350px !important;
+    height: 150px !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    resize: none !important;
+    font-size: 16px !important;
+}
+
+.text-box{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.submit-btn {
+    background-color: #0d0d0d !important;
+    border-color: #0d0d0d !important;
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+
+}
+
+.log-text{
+    text-align: center;
+}
+
+.btn-box{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+.pfp{
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.pfpBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    
+}
+.file_upload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.inp{
+    width: 250px !important;
+}

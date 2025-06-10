@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Post</title>
+    <link rel="stylesheet" href="/css/uploadPost.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+    <div class="uploadContainer shadow">
+        <div class="mb-3 showImage">
+            <div class="image"></div>
+        </div>
+        <form enctype="multipart/form-data" method="post" action="/api/auth/uploadPost">
+            <div class="mb-3">
+                <label for="post" class="form-label">Upload Image:</label>
+                <input class="form-control" type="file" name="post">
+            </div>
+            
+            <div class="mb-1 title">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" name="title" placeholder="Add a title"><br>
+            </div>
+            <div class="mb-3 upload-btn">
+                <button class="btn btn-primary submit-btn">Submit</button>
+            </div>
+            
+            
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.querySelector('input[name="post"]');
+            const showImageDiv = document.querySelector('.image');
+
+            fileInput.addEventListener('change', function () {
+            const file = fileInput.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                showImageDiv.innerHTML = `<img src="${e.target.result}" alt="Selected Image" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);"/>`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                showImageDiv.innerHTML = `<p style="color: red;">Please select a valid image file.</p>`;
+            }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body{
+    background-color: #d1d1d1 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login-container{
+    height: 500px !important;
+    width: 500px !important;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d1d1d1!important;
+}
+.log-text{
+    text-align: center;
+}
+.submit-btn{
+    background-color: #0d0d0d !important;
+    border-color: #0d0d0d !important;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.flash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
