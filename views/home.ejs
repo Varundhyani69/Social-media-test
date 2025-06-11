@@ -79,25 +79,30 @@
                 </div>
             </div>
 
-            <div class="container mt-4 posts-masonry">
-                <% user.posts.forEach(post => { %>
-                    <div class="card post mb-3">
-                    <img src="<%= post.url %>" class="card-img-top card-img">
-                    <div class="card-body">
-                        <h5 class="card-title">@<%= user.name %></h5>
-                        <p class="card-text"><%= post.title %></p>
-                        <div class="btn-diplay">
-                        <form action="/api/auth/delete/<%=post._id%>" method="post"> 
-                            <button class="btn btn-primary btn-edit">Delete post</button>
-                        </form>
-                        <form action="/api/auth/getEdit/<%=post._id%>" method="get">
-                            <button class="btn btn-primary btn-delete">Edit post</button>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-                <% }) %>
-                </div>
+            <div class="container mt-4">
+  <div class="masonry">
+    <% user.posts.forEach(post => { %>
+      <div class="masonry-item">
+        <div class="card post">
+          <img src="<%= post.url %>" class="card-img-top card-img">
+          <div class="card-body">
+            <h5 class="card-title">@<%= user.name %></h5>
+            <p class="card-text"><%= post.title %></p>
+            <div class="btn-diplay">
+              <form action="/api/auth/delete/<%=post._id%>" method="post"> 
+                <button class="btn btn-primary btn-edit">Delete post</button>
+              </form>
+              <form action="/api/auth/getEdit/<%=post._id%>" method="get">
+                <button class="btn btn-primary btn-delete">Edit post</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
 
 
             

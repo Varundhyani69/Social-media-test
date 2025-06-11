@@ -76,32 +76,61 @@ body{
     object-position: center;
 }
 
-.posts-masonry {
-    column-count: 1;
-    column-gap: 1rem;
+.masonry {
+  column-count: 2;
+  column-gap: 1rem;
+  padding: 0 0.5rem;
 }
 
-@media (min-width: 576px) {
-    .posts-masonry {
-        column-count: 2;
-    }
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  width: 100%;
 }
+
+.card.post {
+  width: 100%;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+@media (max-width: 576px) {
+  .masonry {
+    column-count: 2;
+    column-gap: 0.5rem;
+  }
+
+  .card.post {
+    font-size: 0.85rem;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
 @media (min-width: 768px) {
-    .posts-masonry {
-        column-count: 3;
-    }
+  .masonry {
+    column-count: 3;
+  }
 }
+
 @media (min-width: 992px) {
-    .posts-masonry {
-        column-count: 4;
-    }
+  .masonry {
+    column-count: 4;
+  }
 }
-
-.posts-masonry .post {
-    display: inline-block;
-    width: 100%;
-    break-inside: avoid;
-    background: white;
-    border-radius: 0.5rem;
-}
-
