@@ -96,18 +96,22 @@
 </head>
 <body>
 
-  <div class="profile-info">
-    <div class="pfp">
+  <div class="container mt-3">
+  <div class="row align-items-center flex-column flex-md-row text-center text-md-start">
+    <div class="col-md-5 mb-3">
       <img src="<%= profile.pfp.url %>" class="dp shadow-lg">
     </div>
-    <div class="textInfo">
+    <div class="col-md-7">
       <h1>@<%= profile.name %></h1>
-      <p class="bio bio-profile"><i><%= profile.bio %></i></p>
-      <button id="shareBtn" class="btn btn-secondary submit-btn">Share Profile</button>
-      
-      <button class="btn btn-primary submit-btn"><a href="/api/auth/register">Create Account</a></button>
+      <p class="bio"><i><%= profile.bio %></i></p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <button id="shareBtn" class="btn btn-secondary submit-btn">Share Profile</button>
+        <button class="btn btn-primary submit-btn"><a href="/api/auth/register">Create Profile</a></button>
+      </div>
     </div>
   </div>
+</div>
+
 
   <div class="posts-masonry">
     <% profile.posts.forEach(post => { %>
