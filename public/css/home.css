@@ -19,8 +19,13 @@ body{
     object-position: center !important; 
 }
 .info {
-    height: auto; /* let it grow based on content */
+    height: auto; 
     margin-bottom: 2rem;
+}
+.profile-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .pfp, .textInfo {
     padding: 1rem;
@@ -99,3 +104,4 @@ body{
     background: white;
     border-radius: 0.5rem;
 }
+
